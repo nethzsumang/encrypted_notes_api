@@ -11,16 +11,16 @@ use Illuminate\Http\JsonResponse;
 class UsersService
 {
     /**
-     * Get user id
+     * Get user 
      * @param string $username
      * @return JsonResponse
      */
-    final public function getUserId(string $username) : JsonResponse
+    final public function getUser(string $username) : JsonResponse
     {
         $user = (new UsersRepository)->getUser($username);
         if ($user) {
             return response()->json([
-                'user_id' => $user->id
+                'user_id' => $user
             ]);
         }
         return response()->json([

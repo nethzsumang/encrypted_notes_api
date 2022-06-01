@@ -13,14 +13,14 @@ use App\Services\NotesService;
 class UsersController extends Controller
 {
     /**
-     * Get user id
+     * Get user
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getUserId(Request $request)
+    public function getUser(Request $request)
     {
         $username = $request->get('username', '');
-        return (new UsersService)->getUserId($username);
+        return (new UsersService)->getUser($username);
     }
 
     /**
