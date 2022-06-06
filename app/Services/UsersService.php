@@ -20,11 +20,24 @@ class UsersService
         $user = (new UsersRepository)->getUser($username);
         if ($user) {
             return response()->json([
-                'user_id' => $user
+                'user' => $user
             ]);
         }
         return response()->json([
             'error' => 'User not found.'
         ], 404);
+    }
+
+    final public function createUser(array $data) : JsonResponse
+    { logger($data);
+        $response = (new UsersRepository)->createUser($data); logger($response);
+        if (is_array($response) && !empty($response)) {
+            return response()->json([
+                'user' => $response
+            ]);
+        }
+        return response()->json([
+            'error' => 'User not created.'
+        ], 500);
     }
 }

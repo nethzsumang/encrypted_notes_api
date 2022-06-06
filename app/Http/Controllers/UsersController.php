@@ -32,4 +32,11 @@ class UsersController extends Controller
     {
         return (new NotesService)->getAllNotesOfUser($userId);
     }
+
+    final public function createUser(Request $request)
+    {
+        return (new UsersService)->createUser($request->only([
+            'username', 'salt', 'k1', 'k3', 'iv'
+        ]));
+    }
 }

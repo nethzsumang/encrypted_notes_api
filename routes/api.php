@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('users')->group(function () {
     Route::get('/', 'UsersController@getUser');
+    Route::post('/', 'UsersController@createUser');
     Route::get('/{userId}/notes', 'UsersController@getAllNotesOfUser');
 });
